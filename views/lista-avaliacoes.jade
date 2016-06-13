@@ -1,0 +1,22 @@
+.row
+  .col.s12.m6.input-field
+    i.material-icons.prefix search
+    input#filtro(type='text' ng-model='ctrl.filtro')
+    label(for='filtro') Buscar
+table
+  thead 
+    th Nome
+    th Kihon
+    th Kata
+    th Kumite
+    th Média
+  tbody
+    tr(ng-repeat='nota in ctrl.notas | filter: ctrl.filtro')
+      td 
+        a(ui-sref='pessoaEdicao({id: nota.aluno._id})') {{nota.aluno.nome}}
+        br
+        span(style='font-size:  10px') {{nota.observacao}}
+      td {{nota.kihon || '-'}}
+      td {{nota.kata || '-'}}
+      td {{nota.kumite || '-'}}
+      td {{ctrl.media(nota.kata, nota.kihon, nota.kumite)}}

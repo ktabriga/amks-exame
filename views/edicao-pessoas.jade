@@ -1,0 +1,23 @@
+form(ng-submit='ctrl.salvar()')
+  .row
+    .col.s12.m8.input-field
+      input#nome(required type='text' ng-model='ctrl.pessoa.nome')
+      label(for='nome' ng-class='{active: ctrl.pessoa.nome}') Nome *
+    .col.s12.m4.input-field
+      input#nascimento(type='date' ng-model='ctrl.pessoa.nascimento')
+      label.active(for='nascimento' ) Nascimento
+  .row
+    .col.s12.m6.input-field
+      input#telefone(type='text' ng-model='ctrl.pessoa.telefone')
+      label(for='telefone' ng-class='{active: ctrl.pessoa.telefone}') Telefone
+    .col.s12.m6.input-field
+      input#celular(type='text' ng-model='ctrl.pessoa.celular')
+      label(for='celular' ng-class='{active: ctrl.pessoa.celular}') Celular
+  .row
+    .col.s12.input-field
+      label.active(for='professor') Professor
+      input(type='text' ng-model='ctrl.pessoa.nomeProfessor')
+  .row
+    .col.s12
+      button.purple.right.btn(type='submit') Salvar
+      a.right.btn-flat(ui-sref='pessoas') Voltar

@@ -1,0 +1,47 @@
+.card
+  .card-content(ng-if='!ctrl.avaliando')
+    .row
+      .col.s12
+        p Informe o aluno que será avaliado e para qual faixa ele vai.
+    .row
+      .col.s12.l6
+        //label(for='pessoa') Avaliado
+        label &nbsp;
+        ui-select.select-mt(ng-model='ctrl.registro.pessoa' theme='selectize' tyle='width: 100%' title='Escolha o aluno')
+          ui-select-match(placeholder='Isira o nome') {{$select.selected.nome}}
+          ui-select-choices(repeat='p in ctrl.pessoas | filter: $select.search track by p._id')
+            div(ng-bind-html="p.nome | highlight: $select.search")
+      .col.s12.l6.input-field
+        select#faixa.browser-default(type='text' ng-model='ctrl.registro.faixa')
+          option(value='cinza') Cinza
+          option(value='azul') Azul
+          option(value='amarela') Amarela
+          option(value='vermelha') Vermelha
+          option(value='laranja') Laranja
+          option(value='verde') Verde
+          option(value='roxa') Roxa
+          option(value='marrom') Marrom
+          option(value='preta') Preta
+        label.active(for='faixa') Faixa
+    .row
+      .col.s12
+        button.btn.right.waves-effect.waves-light(ng-show='ctrl.registro.pessoa' ng-click='ctrl.iniciar()') Iniciar
+  .card-content(ng-show='ctrl.avaliando')
+    .row
+      .col.s12.m4.input-field
+        label(for='kihon') Kihon
+        input(type='number' ng-model='ctrl.registro.kihon')
+      .col.s12.m4.input-field
+        label(for='kata') Kata
+        input(type='number' ng-model='ctrl.registro.kata')
+      .col.s12.m4.input-field
+        label(for='kumite') Kumite
+        input(type='number' ng-model='ctrl.registro.kumite')
+    .row
+      .col.s12.input-field
+        textarea.materialize-textarea#obs(ng-model='ctrl.registro.observacao')
+        label(for='obs') Observação
+    .row
+      .col.s12
+        button.btn.right.waves-effect.waves-light(ng-click='ctrl.concluir()') Concluir
+        a.btn-flat.right.waves-effect.waves-light(ng-click='ctrl.voltar()') Voltar      

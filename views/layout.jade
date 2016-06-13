@@ -1,0 +1,30 @@
+doctype html
+html(ng-app='app')
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/lib/Materialize/dist/css/materialize.min.css')
+    link( href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link( href="/lib/angular-ui-select/dist/select.css" rel="stylesheet")
+    link(href='//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.default.css' rel='stylesheet')
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    
+  body
+    block content
+    script(src='/lib/jquery/dist/jquery.min.js')
+    script(src='/lib/Materialize/dist/js/materialize.min.js')
+    script(src='/lib/angular/angular.min.js')
+    script(src='/lib/angular-ui-router/release/angular-ui-router.min.js')
+    script(src='/lib/angular-ui-select/dist/select.min.js')
+    script(src='/lib/angular-sanitize/angular-sanitize.js')
+
+    script(src='/js/app.js')
+    script(src='/js/main.controller.js')
+    script(src='/js/pessoaEdicao.ctrl.js')
+    script(src='/js/pessoaLista.ctrl.js')
+    script(src='/js/pessoa.service.js')
+
+    script(src='/js/avaliacao.ctrl.js')
+    script(src='/js/avaliacaoListaCtrl.js')
+
+  

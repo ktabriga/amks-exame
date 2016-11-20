@@ -8,19 +8,16 @@ table
     th Nome
     th Nascimento
     th Telefone
-    th Celular
     th &nbsp;
   tbody
     tr(ng-repeat='pessoa in ctrl.pessoas | filter: ctrl.filtro')
       td 
         a(ui-sref='pessoaEdicao({id: pessoa._id})') {{pessoa.nome}}
       td {{pessoa.nascimento | date: 'dd/MM/yyyy'}} 
-      td {{pessoa.telefone}}
-      td {{pessoa.celular}}
+      td {{pessoa.telefone}}      
       td
         a.btn-flat(ui-sref='pessoaEdicao({id: pessoa._id})')
          i.material-icons mode_edit
 .fixed-action-btn(style="bottom: 45px; right: 24px;")
   a.btn-floating.btn-large.purple(ui-sref='pessoaEdicao')
     i.large.material-icons add
-

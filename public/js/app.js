@@ -7,24 +7,52 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('pessoas', {
     url: '/pessoas',
-    templateUrl: '/partials/lista-pessoas',
-    controller: 'PessoaListaCtrl as ctrl'
+    views: {
+      content: {
+        templateUrl: '/partials/lista-pessoas',
+        controller: 'PessoaListaCtrl as ctrl'
+      },
+      title: {
+        template: 'Pessoas'
+      }
+    }
+    // templateUrl: '/partials/lista-pessoas',
+    // controller: 'PessoaListaCtrl as ctrl'
   })
   .state('pessoaEdicao', {
     url: '/pessoa-edicao/:id',
-    templateUrl: '/partials/edicao-pessoas',
-    controller: 'PessoaEdicaoCtrl as ctrl'
+    views: {
+      content: {
+        templateUrl: '/partials/edicao-pessoas',
+        controller: 'PessoaEdicaoCtrl as ctrl'
+      },
+      title: {
+        template: 'Pessoa'
+      }
+    }
   })
   .state('exames', {
     url: '/exames',
-    templateUrl: '/partials/lista-avaliacoes',
-    controller: 'AvaliacaoListaCtrl as ctrl'
+    views: {
+      content: {
+        templateUrl: '/partials/lista-avaliacoes',
+        controller: 'AvaliacaoListaCtrl as ctrl'
+      },
+      title: {
+        template: 'Notas'
+      }
+    }
   })
   .state('avaliacao', {
     url: '/avaliacao',
-    templateUrl: '/partials/avaliacao',
-    controller: 'AvaliacaoCtrl as ctrl'
+    views: {
+      content: {
+        templateUrl: '/partials/avaliacao',
+        controller: 'AvaliacaoCtrl as ctrl'
+      },
+      title: {
+        template: "Avaliação"
+      }
+    }
   })
 })
-
-

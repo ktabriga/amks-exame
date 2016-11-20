@@ -3,8 +3,10 @@ angular.module('app')
 
 function PessoaService($http, $q) {
   return {
-    listar: function () {
-      return $http.get('/pessoas')
+    listar: function (options) {
+      return $http.get('/pessoas', {
+        params: options
+      })
         .then(function (res) {
           return res.data;
         });
@@ -20,7 +22,7 @@ function PessoaService($http, $q) {
     salvar: function (pessoa) {
       if (pessoa._id) {
         return $http.put(`/pessoas/${pessoa._id}`, pessoa);
-      } 
+      }
 
       return $http.post('/pessoas', pessoa);
     },

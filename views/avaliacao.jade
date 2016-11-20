@@ -1,32 +1,17 @@
 .card
   .card-content(ng-if='!ctrl.avaliando')
-    .row
+    .row(ng-if='!buscando')
       .col.s12
-        p Informe o aluno que será avaliado e para qual faixa ele vai.
-    .row
-      .col.s12.l6
-        //label(for='pessoa') Avaliado
-        label &nbsp;
-        ui-select.select-mt(ng-model='ctrl.registro.pessoa' theme='selectize' tyle='width: 100%' title='Escolha o aluno')
-          ui-select-match(placeholder='Isira o nome') {{$select.selected.nome}}
-          ui-select-choices(repeat='p in ctrl.pessoas | filter: $select.search track by p._id')
-            div(ng-bind-html="p.nome | highlight: $select.search")
-      .col.s12.l6.input-field
-        select#faixa.browser-default(type='text' ng-model='ctrl.registro.faixa')
-          option(value='cinza') Cinza
-          option(value='azul') Azul
-          option(value='amarela') Amarela
-          option(value='vermelha') Vermelha
-          option(value='laranja') Laranja
-          option(value='verde') Verde
-          option(value='roxa') Roxa
-          option(value='marrom') Marrom
-          option(value='preta') Preta
-        label.active(for='faixa') Faixa
-    .row
-      .col.s12
-        button.btn.right.waves-effect.waves-light(ng-show='ctrl.registro.pessoa' ng-click='ctrl.iniciar()') Iniciar
+        h5 Escolha o Aluno
+    .row(style='margin-bottom: 0')
+      .col.s12.m6.input-field
+        i.material-icons.prefix search
+        input#filtro(type='text' ng-model='ctrl.filtro' ng-focus='buscando = true')
+    .row      
+      pessoa-avatar(ng-repeat='pessoa in ctrl.pessoas | filter: ctrl.filtro' pessoa='pessoa' ng-click='ctrl.iniciar(pessoa)')    
   .card-content(ng-show='ctrl.avaliando')
+    
+    pessoa-avatar(pessoa='ctrl.pessoaSelecionada')
     .row
       .col.s12.m4.input-field
         label(for='kihon') Kihon

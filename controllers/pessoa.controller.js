@@ -4,9 +4,13 @@ const Pessoa = require('../models/Pessoa');
 const sendResponse = require('../utils').sendResponse;
 
 router.route('/')
-  .post(sendResponse(req => 
+  .post(sendResponse(req =>
     new Pessoa(req.body).save()))
-  .get(sendResponse(() => Pessoa.find().sort('nome')));
+  .get(sendResponse((req) => {
+    return Pessoa.find()
+      .select(req.query.fields)
+      .sort('nome');
+  }));
 
 router.route('/:id')
   .put(sendResponse(

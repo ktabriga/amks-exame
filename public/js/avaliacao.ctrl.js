@@ -4,14 +4,17 @@ angular.module('app')
 function  AvaliacaoCtrl(pessoaService, $scope) {
   var self = this;
 
-  pessoaService.listar()
+  pessoaService.listar({
+    fields: 'nome nascimento'
+  })
     .then(function (pessoas) {
       self.pessoas = pessoas;
     })
 
-  this.iniciar = function () {
+  this.iniciar = function (pessoa) {
     setTimeout(function () {
       self.avaliando = true;
+      self.pessoaSelecionada = pessoa;
       $scope.$digest();
     }, 300)
   }
@@ -33,16 +36,19 @@ function  AvaliacaoCtrl(pessoaService, $scope) {
     return true;
   }
 
-  
+
 
   this.concluir = function () {
-    var reg =self.registro;
-    console.log(reg)
+    var reg = angular.copy(self.registro);
+    reg.pessoa = self.pessoaSelecionada;
+    reg.kihon = Number(reg.kihon);
+    reg.kata = Number(reg.kata);
+    reg.kumite = Number(reg.kumite);
 
     if (!validar(reg.kata) || !validar(reg.kumite) || !validar(reg.kihon)) {
       return Materialize.toast('Notas deve estar entre 0 e 10', 4000);
     }
-    pessoaService.enviarAvaliacao(self.registro)
+    pessoaService.enviarAvaliacao(reg)
       .then(function () {
         Materialize.toast('Avaliação concluida com sucesso', 5000);
         limpar();

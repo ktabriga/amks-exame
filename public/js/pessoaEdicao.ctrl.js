@@ -4,6 +4,7 @@ angular.module('app')
 function PessoaEdicaoCtr(pessoaService, $stateParams, $state) {
   const ctrl = this;
 
+  angular.element('#nome').focus();
   this.salvar = function () {
     pessoaService.salvar(this.pessoa)
       .then(function () {

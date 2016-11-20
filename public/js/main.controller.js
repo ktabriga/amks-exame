@@ -3,5 +3,7 @@ angular.module('app')
 
 
 function MainCtrl() {
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sideNav({
+    closeOnClick: true
+  });
 }

@@ -2,8 +2,10 @@ extends layout
 
 block content
   nav.purple(ng-controller='MainCtrl as ctrl')
-    .nav-wraper
-      ul#slide-out.side-nav.fixed
+    .nav-wraper          
+      a.brand-logo
+        .title(ui-view='title')
+      ul#slide-out.side-nav.fixed      
         li
           a(ui-sref='pessoas') 
             i.material-icons.left person_pin
@@ -17,7 +19,7 @@ block content
             i.material-icons.left chrome_reader_mode
             |Resultado
       a.button-collapse(href='#' data-activates='slide-out' )
-        i.material-icons list
+        i.material-icons dehaze
   main
     div(style='padding: 12px') 
-      div(ui-view)
+      div(ui-view='content')

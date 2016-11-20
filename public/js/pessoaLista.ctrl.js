@@ -4,7 +4,9 @@ angular.module('app')
 function PessoaListaCtrl(pessoaService) {
   var self = this;
 
-  pessoaService.listar()
+  pessoaService.listar({
+    fields: 'nome nascimento telefone'
+  })
     .then(function (pessoas) {
       self.pessoas = pessoas;
     });

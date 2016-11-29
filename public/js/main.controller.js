@@ -4,6 +4,6 @@ angular.module('app')
 
 function MainCtrl() {
   $(".button-collapse").sideNav({
-    closeOnClick: true
+    //closeOnClick: true
   });
 }

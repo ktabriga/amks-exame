@@ -41,13 +41,15 @@ function  AvaliacaoCtrl(pessoaService, $scope) {
   this.concluir = function () {
     var reg = angular.copy(self.registro);
     reg.pessoa = self.pessoaSelecionada;
-    reg.kihon = Number(reg.kihon);
-    reg.kata = Number(reg.kata);
-    reg.kumite = Number(reg.kumite);
 
     if (!validar(reg.kata) || !validar(reg.kumite) || !validar(reg.kihon)) {
       return Materialize.toast('Notas deve estar entre 0 e 10', 4000);
     }
+
+    reg.kihon = Number(reg.kihon);
+    reg.kata = Number(reg.kata);
+    reg.kumite = Number(reg.kumite);
+
     pessoaService.enviarAvaliacao(reg)
       .then(function () {
         Materialize.toast('Avaliação concluida com sucesso', 5000);

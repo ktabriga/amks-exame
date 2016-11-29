@@ -2,24 +2,24 @@ extends layout
 
 block content
   nav.purple(ng-controller='MainCtrl as ctrl')
-    .nav-wraper          
+    .nav-wraper
       a.brand-logo
         .title(ui-view='title')
-      ul#slide-out.side-nav.fixed      
+      ul#slide-out.side-nav.fixed
         li
-          a(ui-sref='pessoas') 
+          a(ui-sref='pessoas')
             i.material-icons.left person_pin
             |Pessoas
         li
-          a(ui-sref='avaliacao') 
+          a(ui-sref='avaliacao')
             i.material-icons.left assignment
             |Avaliação
         li
-          a(ui-sref='exames') 
+          a(ui-sref='exames')
             i.material-icons.left chrome_reader_mode
             |Resultado
       a.button-collapse(href='#' data-activates='slide-out' )
         i.material-icons dehaze
   main
-    div(style='padding: 12px') 
+    div(style='padding: 12px')
       div(ui-view='content')

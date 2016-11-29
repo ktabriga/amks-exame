@@ -19,4 +19,4 @@ const AvaliacaoSchema = new mongoose.Schema({
   observacao: String
 });
 
-module.exports = mongoose.model('Avaliacao', AvaliacaoSchema);
+module.exports = mongoose.model('AvaliacaoSegunda', AvaliacaoSchema);
